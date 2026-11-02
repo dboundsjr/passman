@@ -6,12 +6,12 @@ in memory. They know nothing about encryption or file I/O -- that
 separation keeps each layer simple and independently testable.
 """
 
-
+# Custom exception for vault entry errors
 class EntryError(Exception):
     """Raised for invalid entry operations (duplicate site, missing site, etc.)."""
     pass
 
-
+# Vault entry manipulation functions
 def add_entry(data: dict, site: str, username: str, password: str, overwrite: bool = False) -> dict:
     """
     Add a new entry for `site`. Raises EntryError if the site already
@@ -28,7 +28,7 @@ def add_entry(data: dict, site: str, username: str, password: str, overwrite: bo
     data[site] = {"username": username, "password": password}
     return data
 
-
+# Vault entry retrieval functions
 def get_entry(data: dict, site: str) -> dict | None:
     """
     Look up a single entry by site name.
@@ -37,7 +37,7 @@ def get_entry(data: dict, site: str) -> dict | None:
     """
     return data.get(site)
 
-
+# Vault entry deletion functions
 def list_entries(data: dict) -> list[str]:
     """
     Return just the site names in the vault, sorted alphabetically.
@@ -46,7 +46,7 @@ def list_entries(data: dict) -> list[str]:
     """
     return sorted(data.keys())
 
-
+# Vault entry deletion functions
 def delete_entry(data: dict, site: str) -> bool:
     """
     Remove an entry. Returns True if something was deleted,
@@ -58,7 +58,7 @@ def delete_entry(data: dict, site: str) -> bool:
         return True
     return False
 
-
+# Example usage and demonstration of the vault entry operations
 if __name__ == "__main__":
     vault_data = {}
 
