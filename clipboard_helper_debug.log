@@ -1,0 +1,6 @@
+Helper started. argv=['C:\\Users\\dboun\\passman\\clipboard_clear_helper.py', '20']
+Read 14 chars from stdin. Sleeping 20s...
+Woke up from sleep.
+Current clipboard matches original? True
+Cleared clipboard.
+Helper exiting normally.
